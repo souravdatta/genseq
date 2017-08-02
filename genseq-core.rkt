@@ -60,7 +60,13 @@
             (λ () : (Seq b)
               (s/map mfn (s/rest seq))))))
 
-              
+(: s/take (All (a) (-> Nonnegative-Integer (Seq a) (Seq a))))
+(define (s/take n seq)
+  (if (= n 0)
+      null-seq
+      (s/cons (s/first seq) (s/take (abs (- n 1)) (s/rest seq)))))
+
+
 
 
   
