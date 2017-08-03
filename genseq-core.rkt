@@ -11,7 +11,8 @@
          s/reduce
          s/map
          s/filter
-         s/take)
+         s/take
+         s/take-while)
          
 (struct empty-seq ())
 
@@ -66,6 +67,14 @@
   (if (= n 0)
       null-seq
       (s/cons (s/first seq) (s/take (abs (- n 1)) (s/rest seq)))))
+
+(: s/take-while (All (a) (-> (-> a Boolean) (Seq a) (Seq a))))
+(define (s/take-while pred seq)
+  (if (null-seq? seq)
+      null-seq
+      (if (pred (s/first seq))
+          (s/cons (s/first seq) (s/take-while pred (s/rest seq)))
+          null-seq)))
 
 (: s/filter (All (a) (-> (-> a Boolean)
                          (Seq a)
