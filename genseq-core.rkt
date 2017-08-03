@@ -9,7 +9,9 @@
          s/rest
          s/cons
          s/reduce
-         s/map)
+         s/map
+         s/filter
+         s/take)
          
 (struct empty-seq ())
 
