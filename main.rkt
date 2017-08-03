@@ -31,6 +31,6 @@
   )
 
 (require "genseq-core.rkt")
-(provide (all-defined-out))
+(provide (all-from-out "genseq-core.rkt"))
 
 
